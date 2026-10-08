@@ -47,7 +47,7 @@ app.post('/submit-archive', (req, res) => {
         console.log('✓ Saved to DB: ' + fName);
 
         if (req.headers['accept'] && req.headers['accept'].includes('text/html')) {
-            res.redirect('/PhobosKraber.html');
+            res.status(200).send('Saved');
         } else {
             res.status(201).json({ message: 'Saved' });
         }
@@ -62,18 +62,18 @@ app.post('/update-user/:id', (req, res) => {
     const { fName, lName, age } = req.body;
     db.prepare('UPDATE users SET fName = ?, lName = ?, age = ? WHERE id = ?').run(fName, lName, age, userId);
     console.log(`✓ Updated User ${userId}`);
-    res.redirect('/PhobosKraber.html');
+    res.status(200).send('Updated');
 });
 
 app.post('/delete-user/:id', (req, res) => {
     const userId = parseInt(req.params.id);
     db.prepare('DELETE FROM users WHERE id = ?').run(userId);
     console.log(`✓ Deleted User ${userId}`);
-    res.redirect('/PhobosKraber.html');
+    res.status(200).send('Updated');
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'PhobosBasic.html'));
+    res.status(200).send('Server is running. Use the Vue frontend to access the site.');
 });
 
 app.listen(PORT, () => {
