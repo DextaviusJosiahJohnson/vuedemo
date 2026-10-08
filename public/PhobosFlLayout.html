@@ -2,140 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Phobos - Flex Layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phobos — Invisible Cities</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&display=swap');
+
+        :root {
+            --brand-dark: #0a0f0d;
+            --brand-deep: #050807;
+            --brand-accent: #CAA552;
+            --brand-beige: #d1d1c1;
+        }
+
         body {
-            margin: 0;
-            padding: 20px;
-            background: url('ly2.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Courier New', Courier, monospace;
-            color: gold;
+            font-family: 'Geist Mono', monospace;
+            background: #050807;
+            color: var(--brand-beige);
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
+        .arcane-border {
+            border-left: 1px solid var(--brand-accent);
         }
 
-        nav a {
-            padding: 10px 15px;
-            background-color: rgba(22, 66, 33, 0.85);
-            color: white;
-            text-decoration: none;
-            border: 2px solid rgb(18, 43, 28);
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        nav a:hover {
-            background-color: black;
-            color: rgb(255, 217, 0);
-            transform: scale(1.05);
-        }
-
-        .quote-box {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 900px;
-            margin: 0 auto 50px auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            line-height: 1.8;
-            text-shadow: 1px 1px black;
-            font-size: 17px;
-        }
-
-        .quote-box em {
-            display: block;
-            margin-top: 20px;
-            color: rgba(255, 215, 100, 0.9);
-            font-style: italic;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: stretch;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-bottom: 40px;
-        }
-
-        .box {
-            background-color: black;
-            color: gold;
-            padding: 30px;
-            flex: 1;
-            text-align: center;
-            border: 1px solid gold;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 217, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px gold;
-        }
-
-        footer {
-            text-align: center;
-            color: rgba(255, 217, 0, 0.233);
-            font-style: italic;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
         }
     </style>
 </head>
-<body>
+<body class="min-h-[100dvh] selection:bg-brand-accent selection:text-brand-deep">
 
-    <nav>
-        <a href="PhobosBasic.html">Basic</a>
-        <a href="PhobosButton.html">Button</a>
-        <a href="PhobosFlLayout.html">Layout</a>
-        <a href="PhobosGridLayout.html">Griddy</a>
-        <a href="PhobosMedia.html">Media</a>
-        <a href="PhobosMiniProject.html">MiniProj</a>
-        <a href="PhobosNavBar.html">NavBar</a>
-        <a href="PhobosProfile.html">Profile</a>
-        <a href="PhobosResume.html">Resume</a>
-        <a href="PhobosStyledForm.html">Styled Form</a>
-        <a href="PhobosKraber.html"><b>Archives</b></a>
+    <nav class="flex justify-start items-center gap-6 p-8 border-b border-white/5">
+        <span class="font-bold text-brand-accent tracking-tighter text-xl">PHOBOS</span>
+        <div class="hidden md:flex gap-4 text-[11px] uppercase tracking-[0.2em] opacity-50">
+            <a href="PhobosBasic.html" class="hover:text-brand-accent transition-colors">Basic</a>
+            <a href="PhobosButton.html" class="hover:text-brand-accent transition-colors">Button</a>
+            <a href="PhobosFlLayout.html" class="text-brand-accent">Layout</a>
+            <a href="PhobosGridLayout.html" class="hover:text-brand-accent transition-colors">Griddy</a>
+            <a href="PhobosMedia.html" class="hover:text-brand-accent transition-colors">Media</a>
+            <a href="PhobosKraber.html" class="hover:text-brand-accent transition-colors">Archives</a>
+        </div>
     </nav>
 
-    <div class="quote-box">
-        “The man who is traveling and does not yet know the city awaiting him along his route wonders what the palace will be like, the barracks, the mill, the theater, the bazaar. In every city of the empire every building is different and set in a different order: but as soon as the stranger arrives at the unknown city [...], he immediately distinguishes which are the princes’ palaces, the high priests’ temples, the tavern, the prison, the slum.
+    <main class="p-8 md:p-16">
+        <div class="editorial-grid">
+            <!-- Main Content: Offset to the right to create intentional asymmetry -->
+            <div class="col-span-12 lg:col-span-7 lg:col-start-3 space-y-12">
+                <section class="space-y-6">
+                    <span class="block text-[10px] uppercase tracking-[0.3em] text-brand-accent opacity-60 font-bold">The Urban Hypothesis</span>
+                    <div class="text-2xl md:text-3xl leading-tight tracking-tighter space-y-8">
+                        <p class="opacity-90">
+                            “The man who is traveling and does not yet know the city awaiting him along his route wonders what the palace will be like, the barracks, the mill, the theater, the bazaar.”
+                        </p>
+                        <p class="opacity-60 text-lg leading-relaxed">
+                            This – some say – confirms the hypothesis that each man bears in his mind a city made only of differences, a city without figures and without form.
+                        </p>
+                        <p class="font-bold italic text-brand-accent leading-tight">
+                            “But why, then, does the city exist? What line separates the inside from the outside, the rumble of wheels from the howl of wolves?”
+                        </p>
+                    </div>
+                    <div class="pl-4 arcane-border text-xs opacity-40 italic">
+                        — Italo Calvino, Invisible Cities
+                    </div>
+                </section>
 
-        This – some say – confirms the hypothesis that each man bears in his mind a city made only of differences, a city without figures and without form, and the individual cities fill it up.
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-12 border-t border-white/5">
+                    <div class="space-y-2">
+                        <h4 class="text-brand-accent text-xs uppercase tracking-widest">Observations</h4>
+                        <p class="text-sm opacity-60 leading-relaxed">The silence of a forgotten city is not empty; it is full of the echoes of things that no longer have a name.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-brand-accent text-xs uppercase tracking-widest">Architecture</h4>
+                        <p class="text-sm opacity-60 leading-relaxed">Walls are the only honest historians. They remember the heat of the sun and the weight of the rain.</p>
+                    </div>
+                </section>
+            </div>
 
-        This is not true of Zoe. [...] The traveler roams all around and has nothing but doubts: he is unable to distinguish the features of the city, the features he keeps distinct in his mind also mingle. He infers this: if existence in all its moments is all of itself, Zoe is the place of indivisible existence. But why, then, does the city exist? What line separates the inside from the outside, the rumble of wheels from the howl of wolves?”
+            <!-- Sidebar: Floating asymmetric anchor -->
+            <div class="hidden lg:block col-span-3 col-start-10 space-y-6 pt-24">
+                <div class="p-4 border border-white/5 rounded-sm hover:border-brand-accent/30 transition-colors group">
+                    <span class="block text-brand-accent mb-2">☽</span>
+                    <h4 class="text-xs font-bold mb-1 group-hover:text-brand-accent transition-colors">Whispers</h4>
+                    <p class="text-[10px] opacity-40">"He forgot which side of the door he was on."</p>
+                </div>
+                <div class="p-4 border border-white/5 rounded-sm hover:border-brand-accent/30 transition-colors group">
+                    <span class="block text-brand-accent mb-2">⌘</span>
+                    <h4 class="text-xs font-bold mb-1 group-hover:text-brand-accent transition-colors">The Howl</h4>
+                    <p class="text-[10px] opacity-40">"The silence speaks in symbols."</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        <em>– Italo Calvino, "Invisible Cities"</em>
-    </div>
-
-    <div class="container">
-        <div class="box">☽ <br><b>Whispers in the Slum</b><br><small>"He forgot which side of the door he was on."</small></div>
-        <div class="box">⌘ <br><b>The Howl Beyond the Walls</b><br><small>"The silence speaks in symbols."</small></div>
-        <div class="box">⚑ <br><b>The Line Between Rooms</b><br><small>"Some walls remember who built them."</small></div>
-    </div>
-
-
-    <footer>
-        &copy; Nengasca, Renzo D.:WD303
+    <footer class="p-16 text-center opacity-20 text-[10px] uppercase tracking-widest">
+        &copy; Nengasca, Renzo D. : WD303
     </footer>
-
 </body>
 </html>

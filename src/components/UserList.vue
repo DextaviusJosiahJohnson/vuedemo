@@ -1,39 +1,49 @@
 <template>
   <div class="archive-page">
-    <div class="archive-container">
-      <h2>User Archives</h2>
+    <div class="structural-grid">
+      <div class="archive-index">
+        <span class="label">DATABASE_INDEX</span>
+        <h2 class="index-title">User Archives</h2>
 
-      <input
-        type="text"
-        v-model="searchTerm"
-        placeholder="Search by first or last name..."
-        id="searchInput"
-      >
-
-      <div id="user-list">
-        <div v-if="filteredUsers.length === 0" class="no-results">
-          No matching archives found.
-        </div>
-        <div
-          v-for="user in filteredUsers"
-          :key="user.id"
-          class="user-card"
-        >
-          <strong>ID:</strong> {{ user.id }} <br>
-          <strong>Name:</strong> {{ user.fName }} {{ user.lName }} <br>
-          <strong>Age:</strong> {{ user.age }} <br><br>
-          <router-link :to="'/users/edit/' + user.id" class="edit-link">[Re-Remember]</router-link>
-
-          <button
-            @click="deleteUser(user.id)"
-            class="delete-btn"
+        <div class="query-container">
+          <span class="query-label">QUERY_TERM</span>
+          <input
+            type="text"
+            v-model="searchTerm"
+            placeholder="Search by first or last name..."
+            id="searchInput"
           >
-            [Forget This Soul.]
-          </button>
+        </div>
+
+        <div id="user-list">
+          <div v-if="filteredUsers.length === 0" class="no-results">
+            NO MATCHING ARCHIVES FOUND.
+          </div>
+          <div
+            v-for="user in filteredUsers"
+            :key="user.id"
+            class="user-card"
+          >
+            <div class="user-details">
+              <span class="field id-field">ID: {{ user.id }}</span>
+              <span class="field name-field">NAME: {{ user.fName }} {{ user.lName }}</span>
+              <span class="field age-field">AGE: {{ user.age }}</span>
+            </div>
+            <div class="user-actions">
+              <router-link :to="'/users/edit/' + user.id" class="edit-link">[Re-Remember]</router-link>
+              <button
+                @click="deleteUser(user.id)"
+                class="delete-btn"
+              >
+                [Forget This Soul.]
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="structural-void"></div>
     </div>
-    <footer><em><b>&copy; Nengasca, Renzo D.:WD303</b></em></footer>
+    <footer><em class="footer-label">&copy; Nengasca, Renzo D.:WD303</em></footer>
   </div>
 </template>
 
@@ -78,50 +88,142 @@ onMounted(fetchUsers)
 <style scoped>
 .archive-page {
   margin: 0;
-  background: radial-gradient(ellipse at center, #0c1212 0%, #050808 100%);
-  background-attachment: fixed;
+  background: #050808;
   font-family: 'Courier New', Courier, monospace;
-  color: #d3d8d3;
+  color: #c0c0c0;
   min-height: 100vh;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-.archive-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: rgba(10, 20, 18, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
+.structural-grid {
+  display: grid;
+  grid-template-columns: 45% 1fr;
+  gap: 0;
+  flex: 1;
+}
+
+.archive-index {
+  border-left: 1px solid rgba(202, 165, 82, 0.2);
+  padding-left: 30px;
+}
+
+.structural-void {
+  /* Intentional void */
+}
+
+.label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(202, 165, 82, 0.5);
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.index-title {
+  font-family: 'Geist Mono', monospace;
+  font-size: 24px;
+  font-weight: 400;
+  color: #caa552;
+  margin: 0 0 40px 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.query-container {
+  margin-bottom: 40px;
+}
+
+.query-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(192, 192, 192, 0.4);
+  display: block;
+  margin-bottom: 6px;
 }
 
 #searchInput {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 10px 0;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #666f66;
-  color: #d0d8d0;
-  border-radius: 6px;
-  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.2);
+  color: #d3d8d3;
+  border-radius: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  transition: border-color 0.1s ease;
 }
 
 #searchInput:focus {
   outline: none;
-  border-color: gold;
-  background-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: #caa552;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #caa552;
+  caret-color: #caa552;
 }
 
 .user-card {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.user-card:hover {
+  background-color: #0d0d0d;
+  border-left: 2px solid #caa552;
+  padding-left: -2px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.id-field {
+  color: #caa552;
+  font-weight: bold;
+}
+
+.name-field {
+  color: #c0c0c0;
+}
+
+.age-field {
+  color: rgba(192, 192, 192, 0.5);
+}
+
+.user-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .edit-link {
-  color: gold;
+  color: #caa552;
   text-decoration: none;
-  margin-right: 15px;
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: text-decoration 0.1s ease;
+}
+
+.edit-link:hover {
+  text-decoration: underline;
 }
 
 .delete-btn {
@@ -130,18 +232,38 @@ onMounted(fetchUsers)
   color: #ff5555;
   cursor: pointer;
   font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 0;
+  transition: text-decoration 0.1s ease;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
 }
 
 .no-results {
-  text-align: center;
-  padding: 20px;
+  text-align: left;
+  padding: 20px 0;
+  color: rgba(202, 165, 82, 0.4);
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 footer {
-  text-align: center;
-  color: rgba(255, 217, 0, 0.2);
-  font-size: 0.8rem;
-  margin-bottom: 16px;
+  text-align: left;
+  margin-top: 60px;
+  border-top: 1px solid rgba(192, 192, 192, 0.1);
+  padding-top: 20px;
+  width: 45%;
+}
+
+.footer-label {
+  color: rgba(202, 165, 82, 0.3);
+  font-size: 10px;
+  font-family: 'Geist Mono', monospace;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 </style>

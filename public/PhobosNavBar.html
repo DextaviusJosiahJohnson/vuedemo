@@ -1,121 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Phobos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phobos — Navigation</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&display=swap');
+
+        :root {
+            --brand-dark: #122B1C;
+            --brand-deep: #0A190F;
+            --brand-accent: #CAA552;
+            --brand-beige: #F5F5DC;
+        }
+
         body {
-            margin: 0;
-            background: url('NavBar.webp') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Courier New', Courier, monospace;
-            color: #d0d8d0;
+            font-family: 'Geist Mono', monospace;
+            background: var(--brand-deep);
+            color: var(--brand-beige);
         }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 93vh;
+        .glass-nav {
+            background: rgba(18, 43, 28, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(202, 165, 82, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--brand-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
             width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .moroi {
-            background: rgba(14, 34, 26, 0.85);
-            backdrop-filter: blur(18px);
-            border: 2px solid #1b3a2c;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 0 45px rgba(0, 0, 0, 0.7);
-            text-align: center;
-            max-width: 850px;
-            width: 100%;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 40px;
-        }
-
-        nav a {
-            padding: 12px 22px;
-            background: rgba(18, 43, 28, 0.75);
-            color: #e6e8e3;
-            text-decoration: none;
-            border: 1px solid #2a4d34;
-            border-radius: 6px;
-            font-weight: 600;
-            letter-spacing: 0.4px;
-            font-size: 0.92rem;
-            transition: all 0.2s ease;
-            box-shadow:
-                inset 0 0 0 rgba(0, 0, 0, 0),
-                0 0 6px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-        }
-
-        nav a:hover {
-            background: rgba(0, 0, 0, 0.9);
-            color: #d9b858;
-            border-color: #5b4e1c;
-            transform: scale(1.07);
-            box-shadow:
-                0 0 10px rgba(217, 184, 88, 0.3),
-                inset 0 0 5px rgba(217, 184, 88, 0.2);
-        }
-
-        h1 {
-            font-size: 1.1rem;
-            line-height: 1.75;
-            margin: 0;
-            color: #c4ccc4;
-            font-weight: 400;
-        }
-
-        p {
-            margin-top: 20px;
-            font-size: 0.88rem;
-            color: #aaa;
-        }
-
-        footer {
-            text-align: center;
-            color: rgba(255, 217, 0, 0.2);
-            font-size: 0.8rem;
-            margin-bottom: 12px;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="moroi">
-            <nav>
-                <a href="PhobosBasic.html">Basic</a>
-                <a href="PhobosButton.html">Button</a>
-                <a href="PhobosFlLayout.html">Layout</a>
-                <a href="PhobosGridLayout.html">Griddy</a>
-                <a href="PhobosMedia.html">Media</a>
-                <a href="PhobosMiniProject.html">MiniProj</a>
-                <a href="PhobosNavBar.html">NavBar</a>
-                <a href="PhobosProfile.html">Profile</a>
-                <a href="PhobosResume.html">Resume</a>
-                <a href="PhobosStyledForm.html">Styled Form</a>
-                <a href="PhobosKraber.html"><b>Archives</b></a>
-            </nav>
-            <h1>
-                "open i have pried the skies above me,<br>
-                solace have i sought among the stars;<br>
-                journeyed i have to the earth below me,<br>
-                seen have i its depths, like blackened chars."
-            </h1>
-            <p><b>- Naktigonis</b></p>
+<body class="min-h-[100dvh] selection:bg-brand-accent selection:text-brand-deep">
+
+    <header class="glass-nav sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-brand-accent rounded-sm rotate-45"></div>
+                <span class="font-bold tracking-tighter text-lg">PHOBOS</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="PhobosBasic.html" class="nav-link hover:text-brand-accent">Basic</a>
+                <a href="PhobosButton.html" class="nav-link hover:text-brand-accent">Offerings</a>
+                <a href="PhobosFlLayout.html" class="nav-link hover:text-brand-accent">Layout</a>
+                <a href="PhobosGridLayout.html" class="nav-link hover:text-brand-accent">Grid</a>
+                <a href="PhobosMedia.html" class="nav-link hover:text-brand-accent">Media</a>
+                <a href="PhobosProfile.html" class="nav-link hover:text-brand-accent">Profile</a>
+                <a href="PhobosResume.html" class="nav-link hover:text-brand-accent">Resume</a>
+                <a href="PhobosKraber.html" class="nav-link hover:text-brand-accent">Archives</a>
+            </div>
+
+            <div class="md:hidden">
+                <button class="p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-24 text-center">
+        <div class="inline-block p-1 px-3 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-[10px] uppercase tracking-[0.2em] mb-6">
+            Navigation Systems
         </div>
-    </div>
-    <footer><em><b>&copy; Nengasca, Renzo D.:WD303</b></em></footer>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-none">
+            The Vessel's <span class="italic text-brand-accent">Compass</span>
+        </h1>
+        <p class="text-lg opacity-60 max-w-2xl mx-auto leading-relaxed mb-12">
+            A study in minimalist navigation. Preserving the arcane atmosphere while ensuring seamless traversal through the archives of Phobos.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors group">
+                <div class="w-10 h-10 rounded-lg bg-brand-accent/20 flex items-center justify-center mb-4 group-hover:bg-brand-accent/40 transition-colors">
+                    <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                </div>
+                <h3 class="font-bold mb-2">Contextual Flow</h3>
+                <p class="text-sm opacity-50">Ensuring users never lose their place in the depths of the site.</p>
+            </div>
+            <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors group">
+                <div class="w-10 h-10 rounded-lg bg-brand-accent/20 flex items-center justify-center mb-4 group-hover:bg-brand-accent/40 transition-colors">
+                    <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h3 class="font-bold mb-2">Arcane Security</h3>
+                <p class="text-sm opacity-50">A navigation system that feels like a ritual, not a menu.</p>
+            </div>
+            <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors group">
+                <div class="w-10 h-10 rounded-lg bg-brand-accent/20 flex items-center justify-center mb-4 group-hover:bg-brand-accent/40 transition-colors">
+                    <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="font-bold mb-2">Temporal Sync</h3>
+                <p class="text-sm opacity-50">Instant transitions between different depths of the vessel.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto py-12 text-center opacity-30 text-xs italic">
+        &copy; Nengasca, Renzo D. : WD303
+    </footer>
 </body>
 </html>

@@ -1,212 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Phobos - Snowy Shrine</title>
+    <title>Phobos - Rhythmic Grid</title>
     <style>
         body {
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             font-family: 'Courier New', Courier, monospace;
-            color: #e0f0f0;
-            background: url('plg.webp') no-repeat center center fixed;
-            background-size: cover;
-            backdrop-filter: brightness(0.95);
+            color: #d0e0e0;
+            background: #0a0f0d;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
         }
 
-        .grid-container {
+        .bento-grid {
             display: grid;
-            grid-template-areas:
-                'header header'
-                'sidenav main'
-                'sidenav sidebar'
-                'footer footer';
-            grid-template-columns: 1fr 3fr;
-            gap: 20px;
-            max-width: 1200px;
-            margin: auto;
-            background-color: rgba(20, 30, 40, 0.75);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(150px, auto);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        header, .sidenav, main, .sidebar, footer {
-            padding: 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        header {
-            grid-area: header;
-            background-color: rgba(30, 40, 60, 0.8);
-            color: #d6d6ff;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .sidenav {
-            grid-area: sidenav;
-            background-color: rgba(40, 55, 70, 0.7);
-        }
-
-        .sidenav h3 {
-            margin-bottom: 10px;
-        }
-
-        .sidenav ul {
-            list-style-type: square;
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .sidenav nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: flex-start;
-        }
-
-        .sidenav nav a {
-            display: inline-block;
-            padding: 8px 12px;
-            background-color: rgba(60, 80, 100, 0.85);
-            color: white;
-            text-decoration: none;
-            border: 2px solid rgba(120, 150, 180, 0.5);
+        .cell {
+            background: rgba(20, 30, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
             border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s ease;
-            font-size: 0.8em;
-            backdrop-filter: blur(3px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .sidenav nav a:hover {
-            background-color: #b8d4ff;
-            color: #002244;
-            transform: scale(1.05);
+        .cell:hover {
+            border-color: rgba(202, 165, 82, 0.4);
+            transform: translateY(-2px);
         }
 
-        main {
-            grid-area: main;
-            background-color: rgba(255, 255, 255, 0.03);
-            border-left: 4px solid rgba(255, 255, 255, 0.15);
-            padding-left: 30px;
+        /* Asymmetric Rhythm */
+        .cell-hero { grid-column: span 2; grid-row: span 2; background: rgba(30, 40, 35, 0.8); border-left: 4px solid #CAA552; }
+        .cell-wide { grid-column: span 2; }
+        .cell-tall { grid-row: span 2; }
+        .cell-accent { background: #1a2420; color: #CAA552; }
+
+        h1, h2, h3 { margin: 0 0 1rem 0; font-weight: bold; }
+        h1 { font-size: 2.5rem; letter-spacing: -1px; }
+        p { font-size: 0.9rem; line-height: 1.6; opacity: 0.7; margin: 0; }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 60px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        .sidebar {
-            grid-area: sidebar;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-left: 2px solid rgba(255, 255, 255, 0.08);
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            transition: all 0.2s;
         }
 
-        footer {
-            grid-area: footer;
-            background-color: rgba(30, 40, 60, 0.8);
-            text-align: center;
-            color: #a0cfff;
-            font-style: italic;
-        }
-
-        blockquote {
-            color: #cddfff;
-            border-left: 4px solid rgba(200, 220, 255, 0.3);
-            padding-left: 15px;
-            margin-left: 0;
-            font-style: italic;
+        nav a:hover, nav a.active {
+            color: #CAA552;
+            border-color: #CAA552;
+            background: rgba(202, 165, 82, 0.1);
         }
 
         .footer-note {
             text-align: center;
-            margin-top: 30px;
-            color: rgba(255, 255, 255, 0.3);
+            margin-top: 60px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
             font-style: italic;
-            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .cell-hero, .cell-wide, .cell-tall { grid-column: span 1; grid-row: span 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="grid-container">
-        <header><h1>Phobos</h1></header>
+    <nav>
+        <a href="PhobosBasic.html">Basic</a>
+        <a href="PhobosButton.html">Button</a>
+        <a href="PhobosFlLayout.html">Layout</a>
+        <a href="PhobosGridLayout.html" class="active">Griddy</a>
+        <a href="PhobosMedia.html">Media</a>
+        <a href="PhobosKraber.html">Archives</a>
+    </nav>
 
-        <div class="sidenav">
-            <h3>Navigation</h3>
-
-            <nav>
-                <a href="PhobosBasic.html">Basic</a>
-                <a href="PhobosButton.html">Button</a>
-                <a href="PhobosFlLayout.html">Layout</a>
-                <a href="PhobosGridLayout.html">Griddy</a>
-                <a href="PhobosMedia.html">Media</a>
-                <a href="PhobosMiniProject.html">MiniProj</a>
-                <a href="PhobosNavBar.html">NavBar</a>
-                <a href="PhobosProfile.html">Profile</a>
-                <a href="PhobosResume.html">Resume</a>
-                <a href="PhobosStyledForm.html">Styled Form</a>
-                <a href="PhobosKraber.html"><b>Archives</b></a>
-            </nav>
+    <div class="bento-grid">
+        <div class="cell cell-hero">
+            <div>
+                <h1>Phobos</h1>
+                <p>A sanctuary for contemplative archives and the architecture of forgetting.</p>
+            </div>
+            <div style="font-size: 0.7rem; opacity: 0.4; text-align: right;">Section 01 // Core</div>
         </div>
 
-        <main>
-            <h2>Main</h2>
-            <p>A sanctuary built to host texts and contemplative archives of the Phobos project.</p>
-            <blockquote>
-                "This is not true of Zoe. [...] The traveler roams all around and has nothing but doubts [...] Zoe is the place of indivisible existence."
-                <br><em>- Italo Calvino, <u>Invisible Cities</u></em>
-            </blockquote>
+        <div class="cell cell-accent">
+            <h3>Status</h3>
+            <p>Winter Solstice active. Cold thresholds maintained.</p>
+        </div>
 
-            <hr>
-            <h3>A Snowy Night / All Was Well</h3>
-            <pre style="color: #cceeff; font-family: 'Courier New', monospace; background-color: rgba(255,255,255,0.02); padding: 10px; border-radius: 10px;">
-The winter breeze begins to blow,
-It carries gently falling snow.
-The first of many winter moons
-Shines brightly as the card'nal croons.
-The charming bird now sings alone
-A lullaby for snow and stone.
-            </pre>
-            <p style="font-size: 0.9em; color: #a0cfff; font-style: italic;">– Naktigonis</p>
-        </main>
+        <div class="cell">
+            <h3>Index</h3>
+            <p>Fragments of the city, mapped by sound and silence.</p>
+        </div>
 
-        <div class="sidebar">
-            <h3>Notes</h3>
-            <p>I sought cold and when it came i scrambled for warmth.</p>
+        <div class="cell cell-wide">
+            <h3>The Archive</h3>
+            <p>Collecting the whispers of a thousand-year-old cathedral before the dust claims the altar.</p>
+        </div>
+
+        <div class="cell cell-tall">
+            <h3>Manifesto</h3>
+            <p>We build not to last, but to witness the beauty of the crumble.</p>
+            <div style="margin-top: 2rem; height: 100px; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;"></div>
+        </div>
+
+        <div class="cell">
+            <h3>Metrics</h3>
+            <p>47 fragments recovered.</p>
+        </div>
+
+        <div class="cell">
+            <h3>Echoes</h3>
+            <p>Recurrence rate: 0.04%</p>
         </div>
     </div>
 
     <div class="footer-note">&copy; Nengasca, Renzo D.:WD303</div>
-
-    <script>
-        const snowflakes = document.createElement('div');
-        snowflakes.innerHTML = `<style>
-            @keyframes snow {
-                0% { transform: translateY(0) rotate(0deg); }
-                100% { transform: translateY(100vh) rotate(360deg); }
-            }
-
-            .flake {
-                position: fixed;
-                top: -10px;
-                color: white;
-                font-size: 1em;
-                user-select: none;
-                animation: snow 10s linear infinite;
-                opacity: 0.6;
-                pointer-events: none;
-            }
-        </style>`;
-
-        document.body.appendChild(snowflakes);
-
-        for (let i = 0; i < 25; i++) {
-            const flake = document.createElement('div');
-            flake.className = 'flake';
-            flake.textContent = '❄';
-            flake.style.left = Math.random() * 100 + 'vw';
-            flake.style.animationDuration = 5 + Math.random() * 10 + 's';
-            flake.style.fontSize = 10 + Math.random() * 14 + 'px';
-            document.body.appendChild(flake);
-        }
-    </script>
 </body>
 </html>

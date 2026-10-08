@@ -31,9 +31,9 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', Courier, monospace;
-  background: #050808;
-  color: #d3d8d3;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #09090b; /* Zinc-950 */
+  color: #fafafa;
 }
 
 .phobos-nav {
@@ -41,41 +41,45 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 40px 0;
-  background: rgba(12, 18, 18, 0.4);
-  padding: 20px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  margin: 20px 0;
+  background: rgba(24, 24, 27, 0.6);
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-container {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .nav-link {
-  padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.02);
-  color: #d8d8c0;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #a1a1aa;
   text-decoration: none;
-  border: 1px solid rgba(200, 200, 200, 0.1);
-  border-radius: 10px;
-  font-weight: 600;
-  transition: 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover, .router-link-exact-active {
-  background-color: rgba(255, 215, 0, 0.1);
-  color: gold;
-  border-color: gold;
-  transform: scale(1.06);
-  text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+  background-color: rgba(255, 215, 0, 0.08);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.3);
+  transform: translateY(-1px);
 }
 
 main {
   min-height: 80vh;
+  padding-bottom: 40px;
 }
 </style>
