@@ -21,19 +21,19 @@
           </div>
           <div
             v-for="user in filteredUsers"
-            :key="user.id"
+            :key="user._id"
             class="user-card"
           >
             <div class="user-details">
-              <span class="field id-field">ID: {{ user.id }}</span>
+              <span class="field id-field">ID: {{ user._id }}</span>
               <span class="field name-field">NAME: {{ user.fName }}</span>
               <span class="field name-field">LOCATION: {{ user.lName }}</span>
               <span class="field age-field">AGE: {{ user.age }}</span>
             </div>
             <div class="user-actions">
-              <router-link :to="'/users/edit/' + user.id" class="edit-link">[Re-Remember]</router-link>
+              <router-link :to="'/users/edit/' + user._id" class="edit-link">[Re-Remember]</router-link>
               <button
-                @click="deleteUser(user.id)"
+                @click="deleteUser(user._id)"
                 class="delete-btn"
               >
                 [Forget This Soul.]

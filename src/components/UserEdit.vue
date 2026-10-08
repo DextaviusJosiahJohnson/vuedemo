@@ -67,7 +67,7 @@ const fetchUser = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/users`)
     const users = await response.json()
-    const found = users.find(u => u.id == id)
+    const found = users.find(u => u._id == id)
     if (found) {
       user.value = { ...found }
     }
