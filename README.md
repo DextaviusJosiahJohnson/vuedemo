@@ -1,10 +1,3 @@
-# 🌑 Phobos - A Deepwoken Inspired Web Project
-
-A visually atmospheric, theme-driven website and user management system. This project serves as a technical demonstration of modern frontend development using Vue.js 3, integrated with a stateful Node.js backend.
-
-## 🔮 Project Vision
-Phobos is designed with a "Shrine-like" aesthetic, drawing inspiration from the atmospheric storytelling and dark fantasy elements of *Deepwoken*. It prioritizes visual cohesion, utilizing backdrop filters, radial gradients, and a custom "Courier New" monospace identity to create a sense of ancient, digital mysticism.
-
 ## 🛠️ Technical Stack
 
 ### Frontend
@@ -17,15 +10,7 @@ Phobos is designed with a "Shrine-like" aesthetic, drawing inspiration from the 
 - **Runtime**: Node.js
 - **Framework**: Express.js
 - **Data**: In-memory state management for user profiles
-
-## ⛩️ Features
-
-- **User Archives**: A full CRUD system for managing "Forgotten Souls" (User profiles).
-- **Visual Showcases**:
-  - **Grid & Flex Demos**: Implementation of complex CSS layouts.
-  - **Atmospheric Media**: Dissolve animations and themed galleries.
-- **Professional Profile**: Integrated digital resume and skill showcase.
-
+- 
 ## 🚀 Getting Started
 
 ### Prerequisites
