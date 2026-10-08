@@ -1,36 +1,50 @@
 <template>
   <div class="form-page">
-    <div class="form-wrapper">
-      <h2>Re-Remember this soul.</h2>
-      <form @submit.prevent="submitUser">
-        <label for="fName">First Name:</label>
-        <input
-          v-model="user.fName"
-          type="text"
-          id="fName"
-          required
-        >
+    <div class="structural-layout">
+      <div class="sidebar">
+        <h1 class="label-mono">The Archive</h1>
+        <p class="desc-mono">Restore the forgotten.</p>
+      </div>
 
-        <label for="lName">Last Name:</label>
-        <input
-          v-model="user.lName"
-          type="text"
-          id="lName"
-          required
-        >
+      <div class="form-main">
+        <form @submit.prevent="submitUser" class="monolithic-form">
+          <div class="input-group">
+            <label for="fName" class="label-mono">Name of the Forgotten</label>
+            <input
+              v-model="user.fName"
+              type="text"
+              id="fName"
+              required
+            >
+          </div>
 
-        <label for="age">Age:</label>
-        <input
-          v-model="user.age"
-          type="number"
-          id="age"
-          required
-        >
+          <div class="input-group">
+            <label for="lName" class="label-mono">Last Known Location</label>
+            <input
+              v-model="user.lName"
+              type="text"
+              id="lName"
+              required
+            >
+          </div>
 
-        <button type="submit">Save Changes</button>
-      </form>
+          <div class="input-group">
+            <label for="age" class="label-mono">Age</label>
+            <input
+              v-model="user.age"
+              type="text"
+              id="age"
+              required
+            >
+          </div>
+
+          <button type="submit" class="submit-btn">Save Changes</button>
+        </form>
+      </div>
     </div>
-    <footer><em><b>&copy; Nengasca, Renzo D.:WD303</b></em></footer>
+    <footer>
+      <span class="label-mono">&copy; Nengasca, Renzo D.:WD303</span>
+    </footer>
   </div>
 </template>
 
@@ -85,73 +99,113 @@ onMounted(fetchUser)
 <style scoped>
 .form-page {
   margin: 0;
-  background: radial-gradient(ellipse at center, #0c1212 0%, #050808 100%);
-  background-attachment: fixed;
-  background-blend-mode: darken;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: #050808;
   color: #d3d8d3;
   min-height: 100vh;
-}
-
-.form-wrapper {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 40px;
-  background: rgba(10, 20, 18, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
-}
-
-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-label {
-  font-size: 0.85rem;
-  color: #aab6aa;
+.structural-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: calc(100vh - 100px);
+  border-bottom: 1px solid rgba(202, 165, 82, 0.3);
+}
+
+.sidebar {
+  padding: 60px 40px;
+  border-right: 1px solid rgba(202, 165, 82, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-main {
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.monolithic-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label-mono {
+  font-family: 'Geist Mono', 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #cabf7e;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.desc-mono {
+  font-family: 'Geist Mono', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #99a9a2;
+  margin: 0;
 }
 
 input {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #666f66;
-  color: #d0d8d0;
-  padding: 10px;
-  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid rgba(202, 165, 82, 0.3);
+  color: #cfd8d2;
+  padding: 12px;
+  border-radius: 0;
   font-family: inherit;
+  transition: border-color 0.2s ease;
 }
 
 input:focus {
   outline: none;
-  border-color: gold;
-  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #cabf7e;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: gold;
-  border: 1px solid gold;
-  border-radius: 8px;
+.submit-btn {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #050808;
+  color: #cabf7e;
+  border: 1px solid #cabf7e;
+  border-radius: 0;
   cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  transition: all 0.25s ease;
+  font-family: 'Geist Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
 }
 
-button:hover {
-  background-color: gold;
-  color: black;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+.submit-btn:hover {
+  background-color: #cabf7e;
+  color: #050808;
 }
 
 footer {
-  text-align: center;
-  color: rgba(255, 217, 0, 0.2);
-  font-size: 0.8rem;
-  margin-bottom: 16px;
+  padding: 20px 40px;
+  text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .structural-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(202, 165, 82, 0.3);
+    padding: 30px 40px;
+  }
 }
 </style>

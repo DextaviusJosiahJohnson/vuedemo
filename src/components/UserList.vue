@@ -26,7 +26,8 @@
           >
             <div class="user-details">
               <span class="field id-field">ID: {{ user.id }}</span>
-              <span class="field name-field">NAME: {{ user.fName }} {{ user.lName }}</span>
+              <span class="field name-field">NAME: {{ user.fName }}</span>
+              <span class="field name-field">LOCATION: {{ user.lName }}</span>
               <span class="field age-field">AGE: {{ user.age }}</span>
             </div>
             <div class="user-actions">
