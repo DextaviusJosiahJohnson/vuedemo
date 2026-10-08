@@ -1,37 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/components/HomePage.vue'
-import blogPage from '@/components/blogPage.vue'
-import galleryPage from '@/components/galleryPage.vue'
-import aboutPage from '@/components/aboutPage.vue'
-import contactPage from '@/components/contactPage.vue'
+import UserList from '@/components/UserList.vue'
+import UserForm from '@/components/UserForm.vue'
+import UserEdit from '@/components/UserEdit.vue'
+import ProfilePage from '@/components/ProfilePage.vue'
+import ResumePage from '@/components/ResumePage.vue'
+import MediaPage from '@/components/MediaPage.vue'
+import GridPage from '@/components/GridPage.vue'
+import FlexPage from '@/components/FlexPage.vue'
+import ButtonDemoPage from '@/components/ButtonDemoPage.vue'
+import MiniProjectPage from '@/components/MiniProjectPage.vue'
+import StatusPage from '@/components/StatusPage.vue'
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {
-      path: '/',
-      name: 'HomePage',
-      component: HomePage
-    },
-    {
-      path: '/',
-      name: 'blogPage',
-      component: blogPage
-    },
-    {
-      path: '/',
-      name: 'galleryPage',
-      component: galleryPage
-    },
-    {
-      path: '/',
-      name: 'aboutPage',
-      component: aboutPage
-    },
-    {
-      path: '/',
-      name: 'contactPage',
-      component: contactPage
-    }
+    { path: '/', name: 'HomePage', component: HomePage },
+    { path: '/users', name: 'UserList', component: UserList },
+    { path: '/users/new', name: 'UserForm', component: UserForm },
+    { path: '/users/edit/:id', name: 'UserEdit', component: UserEdit },
+    { path: '/profile', name: 'ProfilePage', component: ProfilePage },
+    { path: '/resume', name: 'ResumePage', component: ResumePage },
+    { path: '/media', name: 'MediaPage', component: MediaPage },
+    { path: '/grid', name: 'GridPage', component: GridPage },
+    { path: '/flex', name: 'FlexPage', component: FlexPage },
+    { path: '/buttons', name: 'ButtonDemoPage', component: ButtonDemoPage },
+    { path: '/mini-project', name: 'MiniProjectPage', component: MiniProjectPage },
+    { path: '/status', name: 'StatusPage', component: StatusPage },
   ]
 })
 

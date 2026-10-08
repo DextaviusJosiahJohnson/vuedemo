@@ -1,46 +1,25 @@
 <template>
   <div id="app">
-    <!-- Bootswatch Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
-      <div class="container">
-        <router-link class="navbar-brand font-weight-bold" :to="{ name: 'HomePage' }">
-          <i class="fas fa-cubes mr-2"></i>VueJS 3
-        </router-link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'HomePage' }" exact>Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'blogPage' }">Blog</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'galleryPage' }">Gallery</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'aboutPage' }">About</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'contactPage' }">Contact</router-link>
-            </li>
-          </ul>
-        </div>
+    <!-- Phobos-style Navbar -->
+    <nav class="phobos-nav">
+      <div class="nav-container">
+        <router-link :to="{ name: 'HomePage' }" class="nav-link"><b>Basic</b></router-link>
+        <router-link :to="{ name: 'ButtonDemoPage' }" class="nav-link"><b>Button</b></router-link>
+        <router-link :to="{ name: 'FlexPage' }" class="nav-link"><b>Layout</b></router-link>
+        <router-link :to="{ name: 'GridPage' }" class="nav-link"><b>Griddy</b></router-link>
+        <router-link :to="{ name: 'MediaPage' }" class="nav-link"><b>Media</b></router-link>
+        <router-link :to="{ name: 'MiniProjectPage' }" class="nav-link"><b>MiniProj</b></router-link>
+        <router-link :to="{ name: 'UserList' }" class="nav-link"><b>Archives</b></router-link>
+        <router-link :to="{ name: 'UserForm' }" class="nav-link"><b>Styled Form</b></router-link>
+        <router-link :to="{ name: 'ProfilePage' }" class="nav-link"><b>Profile</b></router-link>
+        <router-link :to="{ name: 'ResumePage' }" class="nav-link"><b>Resume</b></router-link>
       </div>
     </nav>
 
     <!-- Main Dynamic Route Viewport -->
-    <main class="container">
+    <main>
       <router-view/>
     </main>
-
-    <!-- Footer -->
-    <footer class="container text-center text-muted py-4 mt-5 border-top">
-      <p class="small mb-0">FIN-LAB-1: VueJS 3 Routing & Navigation Activity &copy; 2026 (Node v24 Ready)</p>
-    </footer>
   </div>
 </template>
 
@@ -51,17 +30,54 @@ export default {
 </script>
 
 <style>
-/* Active link highlighting in Vue Router 4 */
-.router-link-exact-active,
-.router-link-active {
-  font-weight: 700;
-  color: #ffffff !important;
-  border-bottom: 2px solid #ffffff;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background: #050808;
+  color: #d3d8d3;
 }
-footer {
-  text-align: center;
-  color: rgba(255, 217, 0, 0.2);
-  font-size: 0.8rem;
-  margin-bottom: 16px;
+
+.phobos-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 40px 0;
+  background: rgba(12, 18, 18, 0.4);
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #d8d8c0;
+  text-decoration: none;
+  border: 1px solid rgba(200, 200, 200, 0.1);
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.nav-link:hover, .router-link-exact-active {
+  background-color: rgba(255, 215, 0, 0.1);
+  color: gold;
+  border-color: gold;
+  transform: scale(1.06);
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+main {
+  min-height: 80vh;
 }
 </style>

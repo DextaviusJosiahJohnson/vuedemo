@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phobos Shrine</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: url('krs.webp') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Courier New', Courier, monospace;
+            color: #caa552;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            padding: 10px 15px;
+            background-color: rgba(22, 66, 33, 0.85);
+            color: black;
+            text-decoration: none;
+            border: 2px solid rgb(18, 43, 28);
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a:hover {
+            background-color: black;
+            color: gold;
+            transform: scale(1.05);
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.7);
+            position: relative;
+        }
+
+        .quote {
+            font-size: 20px;
+            line-height: 1.7;
+            text-shadow: 1px 1px black;
+        }
+
+        .angel {
+            width: 350px;
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 10px black);
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            color: rgba(255, 217, 0, 0.3);
+            font-style: italic;
+        }
+
+        #offeringBox {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        #offeringInput {
+            padding: 10px;
+            width: 70%;
+            max-width: 400px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #offeringInput::placeholder {
+            color: #777;
+            font-style: italic;
+        }
+
+        #offeringInput:focus {
+            outline: none;
+            box-shadow: 0 0 5px gold;
+        }
+
+        #offeringBox button,
+        #offeringInputBox button {
+            font-family: 'Courier New', Courier, monospace;
+            color: black;
+            padding: 10px 20px;
+            background-color: aliceblue;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #offeringBox button:hover,
+        #offeringInputBox button:hover {
+            background-color: black;
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="PhobosBasic.html">Basic</a>
+        <a href="PhobosButton.html">Button</a>
+        <a href="PhobosFlLayout.html">Layout</a>
+        <a href="PhobosGridLayout.html">Griddy</a>
+        <a href="PhobosMedia.html">Media</a>
+        <a href="PhobosMiniProject.html">MiniProj</a>
+        <a href="PhobosNavBar.html">NavBar</a>
+        <a href="PhobosProfile.html">Profile</a>
+        <a href="PhobosResume.html">Resume</a>
+        <a href="PhobosStyledForm.html">Styled Form</a>
+        <a href="PhobosKraber.html"><b>Archives</b></a>
+    </nav>
+
+    <div class="content">
+        <p class="quote">
+            <b>
+                "While the statue is the raw material of nightmares,<br>
+                there is something soothing about the idea <br>
+                that even a beast like this might be harnessed;<br>
+                that there is a chance of such an ally, <br>
+                for those who crack the code of offerings and prayer. <br>
+                Whether it is actually listening, it is impossible to tell. <br>
+                The thought that it even might, however, <br>
+                is something to hold onto in the dark."<br>
+                (- Sunless Skies, 'Carillon - An Overgrown Shrine' storylet)
+            </b>
+        </p>
+        <img src="angel.png" alt="Angel statue" class="angel">
+
+        <!-- Leave Offering Section -->
+        <div id="offeringBox">
+            <button onclick="showOffering()">Leave Offering</button>
+
+            <div id="offeringInputBox" style="display:none; margin-top: 15px;">
+                <input type="text" id="offeringInput" placeholder="What do you offer?">
+                <button onclick="submitOffering()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; Nengasca, Renzo D.:WD203
+    </footer>
+
+    <script>
+        function showOffering() {
+            document.getElementById('offeringInputBox').style.display = 'block';
+        }
+
+        function submitOffering() {
+            const offering = document.getElementById('offeringInput').value.trim();
+            if (offering) {
+                alert(`You offered: "${offering}". The shrine remains silent... for now.`);
+                document.getElementById('offeringInput').value = '';
+            } else {
+                alert("You must offer something.");
+            }
+        }
+    </script>
+
+</body>
+</html>
