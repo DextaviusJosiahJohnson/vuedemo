@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <!-- Phobos-style Navbar -->
-    <nav class="phobos-nav">
-      <div class="nav-container">
-        <router-link :to="{ name: 'HomePage' }" class="nav-link"><b>Basic</b></router-link>
-        <router-link :to="{ name: 'ButtonDemoPage' }" class="nav-link"><b>Button</b></router-link>
-        <router-link :to="{ name: 'FlexPage' }" class="nav-link"><b>Layout</b></router-link>
-        <router-link :to="{ name: 'GridPage' }" class="nav-link"><b>Griddy</b></router-link>
-        <router-link :to="{ name: 'MediaPage' }" class="nav-link"><b>Media</b></router-link>
-        <router-link :to="{ name: 'UserList' }" class="nav-link"><b>Archives</b></router-link>
-        <router-link :to="{ name: 'UserForm' }" class="nav-link"><b>Styled Form</b></router-link>
-        <router-link :to="{ name: 'ResumePage' }" class="nav-link"><b>Profile</b></router-link>
+    <!-- Hover Trigger Zone -->
+    <div class="nav-trigger"></div>
+    <nav class="island-nav">
+      <div class="nav-inner">
+        <router-link :to="{ name: 'HomePage' }" class="nav-item"><span>Basic</span></router-link>
+        <router-link :to="{ name: 'ButtonDemoPage' }" class="nav-item"><span>Button</span></router-link>
+        <router-link :to="{ name: 'FlexPage' }" class="nav-item"><span>Layout</span></router-link>
+        <router-link :to="{ name: 'GridPage' }" class="nav-item"><span>Griddy</span></router-link>
+        <router-link :to="{ name: 'MediaPage' }" class="nav-item"><span>Media</span></router-link>
+        <router-link :to="{ name: 'UserList' }" class="nav-item"><span>Archives</span></router-link>
+        <router-link :to="{ name: 'UserForm' }" class="nav-item"><span>Styled Form</span></router-link>
+        <router-link :to="{ name: 'ResumePage' }" class="nav-item"><span>Profile</span></router-link>
       </div>
     </nav>
 
-    <!-- Main Dynamic Route Viewport -->
     <main>
       <router-view/>
     </main>
@@ -31,55 +31,84 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: #09090b; /* Zinc-950 */
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background: #050505;
   color: #fafafa;
+  overflow-x: hidden;
 }
 
-.phobos-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 20px 0;
-  background: rgba(24, 24, 27, 0.6);
-  padding: 12px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  position: sticky;
+.island-nav {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.nav-trigger {
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 999;
 }
 
-.nav-container {
+.nav-trigger:hover ~ .island-nav,
+.island-nav:hover {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-inner {
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.nav-link {
-  padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.03);
+.nav-item {
+  padding: 8px 16px;
   color: #a1a1aa;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-  font-size: 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
   font-weight: 500;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.nav-link:hover, .router-link-exact-active {
-  background-color: rgba(255, 215, 0, 0.08);
-  color: #fbbf24;
-  border-color: rgba(251, 191, 36, 0.3);
-  transform: translateY(-1px);
+.nav-item span {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item:hover, .router-link-exact-active {
+  color: #fff;
+  background: rgba(202, 165, 82, 0.15);
+}
+
+.router-link-exact-active {
+  background: #caa552;
+  color: #000;
 }
 
 main {
-  min-height: 80vh;
-  padding-bottom: 40px;
+  min-height: 100dvh;
+  padding-top: 0;
 }
 </style>
