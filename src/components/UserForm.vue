@@ -61,7 +61,7 @@ const user = ref({
 
 const submitUser = async () => {
   try {
-    const response = await fetch('http://localhost:3000/PhobosStyledForm.html', {
+    const response = await fetch('http://localhost:3000/submit-archive', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
