@@ -25,6 +25,7 @@
           <li>Blender (Intermediate)</li>
           <li>Unity (Basic)</li>
           <li>Adobe Photoshop (Basic)</li>
+          <li>Hosting: Render, Vercel</li>
         </ul>
       </div>
 
@@ -32,7 +33,7 @@
         <h2>🛠️ Projects</h2>
         <ul>
           <li><strong>Phobos Website</strong> – A multi-page HTML/CSS project themed around shrine-like aesthetic and visual cohesion</li>
-          <li><strong>Project Deimos</strong> – A game currently in development; further details currently withheld</li>
+          <li><strong>Cahara Music Downloader</strong> – <a href="https://github.com/DextaviusJosiahJohnson/CaharaMusicDownloader" target="_blank" style="color: gold;">GitHub Repository</a></li>
           <li><strong>Blender Virtual Environments</strong> – Personal project creating stylized 3D worlds using Blender</li>
         </ul>
       </div>
@@ -40,6 +41,8 @@
       <div class="section softbox">
         <h2>📄 Certifications & Self-Learning</h2>
         <ul>
+          <li>Cisco Endpoint Security Certified</li>
+          <li>JS Institute JavaScript Essentials 1 Certified</li>
           <li>CompTIA IT Fundamentals (ITF+) Certified</li>
           <li>Self-studied Blender since 2020</li>
           <li>Self-studied Unity since 2023</li>
@@ -47,7 +50,7 @@
       </div>
 
       <footer>
-        &copy; Nengasca, Renzo D.:WD203
+        &copy; Nengasca, Renzo D.:WD303
       </footer>
     </div>
   </div>

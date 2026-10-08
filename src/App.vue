@@ -8,11 +8,9 @@
         <router-link :to="{ name: 'FlexPage' }" class="nav-link"><b>Layout</b></router-link>
         <router-link :to="{ name: 'GridPage' }" class="nav-link"><b>Griddy</b></router-link>
         <router-link :to="{ name: 'MediaPage' }" class="nav-link"><b>Media</b></router-link>
-        <router-link :to="{ name: 'MiniProjectPage' }" class="nav-link"><b>MiniProj</b></router-link>
         <router-link :to="{ name: 'UserList' }" class="nav-link"><b>Archives</b></router-link>
         <router-link :to="{ name: 'UserForm' }" class="nav-link"><b>Styled Form</b></router-link>
-        <router-link :to="{ name: 'ProfilePage' }" class="nav-link"><b>Profile</b></router-link>
-        <router-link :to="{ name: 'ResumePage' }" class="nav-link"><b>Resume</b></router-link>
+        <router-link :to="{ name: 'ResumePage' }" class="nav-link"><b>Profile</b></router-link>
       </div>
     </nav>
 

@@ -21,9 +21,6 @@ Phobos is designed with a "Shrine-like" aesthetic, drawing inspiration from the 
 ## ⛩️ Features
 
 - **User Archives**: A full CRUD system for managing "Forgotten Souls" (User profiles).
-- **Interactive Meditations**: 
-  - **The Captain's Gate**: A state-based simulation exploring the balance between Agency and Fate.
-  - **The Offering Shrine**: Interactive elements that respond to user input.
 - **Visual Showcases**:
   - **Grid & Flex Demos**: Implementation of complex CSS layouts.
   - **Atmospheric Media**: Dissolve animations and themed galleries.
@@ -61,7 +58,7 @@ Phobos is designed with a "Shrine-like" aesthetic, drawing inspiration from the 
    Open your browser to the local URL provided by Vite (usually `http://localhost:5173`).
 
 ## 📜 Credits
-Developed by **Renzo D. Nengasca** as part of the WD203 curriculum.
+Developed by **Renzo D. Nengasca** as part of the WD303 curriculum.
 
 ---
 *“The gate stands neither fully open nor closed—it exists in the space between surrender and sovereignty.”*

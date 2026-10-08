@@ -13,7 +13,7 @@
       <p><em>— John Koenig, The Dictionary of Obscure Sorrows</em></p>
     </div>
 
-    <footer><em><b>&copy; Nengasca, Renzo D.:WD203</b></em></footer>
+    <footer><em><b>&copy; Nengasca, Renzo D.:WD303</b></em></footer>
   </div>
 </template>
 

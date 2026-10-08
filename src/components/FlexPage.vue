@@ -17,7 +17,7 @@
     </div>
 
     <footer>
-      &copy; Nengasca, Renzo D.:WD203
+      &copy; Nengasca, Renzo D.:WD303
     </footer>
   </div>
 </template>

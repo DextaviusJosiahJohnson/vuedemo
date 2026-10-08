@@ -11,7 +11,6 @@
           <router-link :to="{ name: 'FlexPage' }">Layout</router-link>
           <router-link :to="{ name: 'GridPage' }">Griddy</router-link>
           <router-link :to="{ name: 'MediaPage' }">Media</router-link>
-          <router-link :to="{ name: 'MiniProjectPage' }">MiniProj</router-link>
           <router-link :to="{ name: 'UserList' }">Archives</router-link>
           <router-link :to="{ name: 'UserForm' }">Styled Form</router-link>
           <router-link :to="{ name: 'ProfilePage' }">Profile</router-link>
@@ -45,10 +44,10 @@ A lullaby for snow and stone.
         <p>I sought cold and when it came i scrambled for warmth.</p>
       </div>
 
-      <footer>&copy; Nengasca, Renzo D.:WD203</footer>
+      <footer>&copy; Nengasca, Renzo D.:WD303</footer>
     </div>
 
-    <div class="footer-note">&copy; Nengasca, Renzo D.:WD203</div>
+    <div class="footer-note">&copy; Nengasca, Renzo D.:WD303</div>
     <div class="snow-container">
       <div v-for="n in 25" :key="n" class="flake" :style="generateSnowStyle()">❄</div>
     </div>
