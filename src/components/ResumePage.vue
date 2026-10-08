@@ -1,12 +1,13 @@
 <template>
   <div class="resume-page">
     <div class="mainbox">
-      <img src="/dukes.png" alt="duke" class="duke-img">
-
-      <div class="section">
-        <h1>Renzo D. Nengasca</h1>
-        <p>3rd Year BS Web Development Student</p>
-        <p><em>Email:</em> rengasca@example.com | <em>Discord:</em> LottieDeFontaine#BRAT</p>
+      <div class="profile-header">
+        <img src="/dukes.png" alt="duke" class="duke-img">
+        <div class="header-text">
+          <h1>Renzo D. Nengasca</h1>
+          <p>3rd Year BS Web Development Student</p>
+          <p><em>Email:</em> renzo.nengasca@gmail.com | <em>LinkedIn:</em> <a href="https://www.linkedin.com/in/renzo-nengasca-b80700382/" target="_blank" style="color: gold; text-decoration: none;">linkedin.com/in/renzo-nengasca-b80700382</a></p>
+        </div>
       </div>
 
       <div class="section softbox">
@@ -76,14 +77,23 @@
   position: relative;
 }
 
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
 .duke-img {
-  position: absolute;
-  top: 120px;
-  right: 50px;
   width: 150px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.header-text {
+  flex: 1;
 }
 
 h1, h2 {

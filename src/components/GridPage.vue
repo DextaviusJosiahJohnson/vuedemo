@@ -13,8 +13,7 @@
           <router-link :to="{ name: 'MediaPage' }">Media</router-link>
           <router-link :to="{ name: 'UserList' }">Archives</router-link>
           <router-link :to="{ name: 'UserForm' }">Styled Form</router-link>
-          <router-link :to="{ name: 'ProfilePage' }">Profile</router-link>
-          <router-link :to="{ name: 'ResumePage' }">Resume</router-link>
+          <router-link :to="{ name: 'ResumePage' }">Profile</router-link>
         </nav>
       </div>
 
