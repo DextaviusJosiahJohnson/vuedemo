@@ -23,7 +23,7 @@ const router = createRouter({
     { path: '/profile', name: 'ResumePage', component: ResumePage },
     { path: '/media', name: 'MediaPage', component: MediaPage },
     { path: '/grid', name: 'GridPage', component: GridPage },
-    { path: '/flex', name: 'FlexPage', component: 'FlexPage' },
+    { path: '/flex', name: 'FlexPage', component: FlexPage },
     { path: '/buttons', name: 'ButtonDemoPage', component: ButtonDemoPage },
     { path: '/status', name: 'StatusPage', component: StatusPage },
     { path: '/angels', name: 'AngelsGateway', component: AngelsGateway },
