@@ -1,82 +1,81 @@
+const mongoose = require('mongoose');
 const express = require('express');
-const Database = require('better-sqlite3');
-const path = require('path');
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
 
-// 1. Database Setup
-const db = new Database(path.join(__dirname, 'users.db'));
-db.exec(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    fName TEXT,
-    lName TEXT,
-    age INTEGER
-  )
-`);
-
-const rowCount = db.prepare('SELECT count(*) as count FROM users').get();
-if (rowCount.count === 0) {
-    const insert = db.prepare('INSERT INTO users (fName, lName, age) VALUES (?, ?, ?)');
-    insert.run('Cartier', 'Slinks', 26);
-    insert.run('Wattkin', 'Slate', 22);
-}
-
-// 2. Middleware - Added CORS for Vue
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
-// 3. Routes
-app.get('/api/users', (req, res) => {
-    const users = db.prepare('SELECT * FROM users').all();
+// MongoDB Connection
+// Use environment variable for production (Render)
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://renzonengasca_db_user:uN60Cwj4fQpE8B34@cluster0.mongodb.net/archive_db?retryWrites=true&w=majority';
+
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => console.error('❌ MongoDB Connection Error:', err));
+
+// User Schema
+const userSchema = new mongoose.Schema({
+  fName: String,
+  lName: String,
+  age: Number
+});
+
+const User = mongoose.model('User', userSchema);
+
+// API Routes
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find();
     res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
 });
 
-app.post('/submit-archive', (req, res) => {
-    console.log('---> SUBMIT BUTTON PRESSED');
-    console.log('Data received:', req.body);
+app.post('/api/submit-archive', async (req, res) => {
+  const { fName, lName, age } = req.body;
+  try {
+    const newUser = new User({ fName, lName, age });
+    await newUser.save();
 
-    const { fName, lName, age } = req.body;
-
-    try {
-        const stmt = db.prepare('INSERT INTO users (fName, lName, age) VALUES (?, ?, ?)');
-        stmt.run(fName, lName, age);
-        console.log('✓ Saved to DB: ' + fName);
-
-        if (req.headers['accept'] && req.headers['accept'].includes('text/html')) {
-            res.status(200).send('Saved');
-        } else {
-            res.status(201).json({ message: 'Saved' });
-        }
-    } catch (err) {
-        console.error('X DB Error:', err);
-        res.status(500).send('Internal Server Error');
+    if (req.headers['accept'] && req.headers['accept'].includes('text/html')) {
+      res.status(200).send('Saved');
+    } else {
+      res.status(201).json({ message: 'Saved' });
     }
+  } catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
 });
 
-app.post('/update-user/:id', (req, res) => {
-    const userId = parseInt(req.params.id);
-    const { fName, lName, age } = req.body;
-    db.prepare('UPDATE users SET fName = ?, lName = ?, age = ? WHERE id = ?').run(fName, lName, age, userId);
-    console.log(`✓ Updated User ${userId}`);
+app.post('/api/update-user/:id', async (req, res) => {
+  const { id } = req.params;
+  const { fName, lName, age } = req.body;
+  try {
+    await User.findByIdAndUpdate(id, { fName, lName, age });
     res.status(200).send('Updated');
+  } catch (err) {
+    res.status(500).send('Error updating user');
+  }
 });
 
-app.post('/delete-user/:id', (req, res) => {
-    const userId = parseInt(req.params.id);
-    db.prepare('DELETE FROM users WHERE id = ?').run(userId);
-    console.log(`✓ Deleted User ${userId}`);
+app.post('/api/delete-user/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.findByIdAndDelete(id);
     res.status(200).send('Updated');
+  } catch (err) {
+    res.status(500).send('Error deleting user');
+  }
 });
 
 app.get('/', (req, res) => {
-    res.status(200).send('Server is running. Use the Vue frontend to access the site.');
+  res.status(200).send('Server is running. Use the Vue frontend to access the site.');
 });
 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`\n🚀 SERVER READY`);
-    console.log(`URL: http://localhost:3000\n`);
+  console.log(`\n🚀 SERVER READY on port ${PORT}`);
 });
