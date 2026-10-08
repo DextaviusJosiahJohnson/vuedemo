@@ -9,7 +9,7 @@
           <p>I want to beg, to repent, to vanish, but the wings keep growing. They are inside my skull, behind my eyes, coiling like roots through soft earth. My spine is no longer mine. The feathers pulse with memory—not mine, but older—primordial grief and holy war. I can see every sin I've ever made written in the wet light on the floor. I do not understand, and I am punished for it. The angel is dissecting me with love. Its grace is a—</p>
         </div>
         <footer class="angels-footer">
-          &copy; Nengasca, Renzo D.: WD203
+          &copy; Nengasca, Renzo D.: WD303
         </footer>
       </div>
       <div class="visual-section">

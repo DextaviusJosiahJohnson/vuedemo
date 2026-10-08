@@ -10,7 +10,7 @@
           <p>The anatomy of the angel is such that this analogy is less superficial then it may first seem. To carry it further, if we were to examine an angel as we might a divine creature laid bare, we would find ourselves able to isolate and describe its various appendages and their functions in a decidedly anatomical fashion. There is even a fair number of direct comparisons to be drawn between those 'organs' of an angel and those of the human body.</p>
         </div>
         <footer class="angels-footer">
-          &copy; Nengasca, Renzo D.: WD203
+          &copy; Nengasca, Renzo D.: WD303
         </footer>
       </div>
       <div class="visual-section">

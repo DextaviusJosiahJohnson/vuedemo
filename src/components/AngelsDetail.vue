@@ -10,7 +10,7 @@
           <p>Senses to the world for hours at a time, seeing all, recording all, judging all. In this state of eternal vigilance, they will spend their entire existence. Anything might cry out, curse, pray in whispers, and they would know. We can only pray that the angel will not judge us as it sees. In this way, the gaze of an angel seems less like empathy and more like flame. For it is here that the angel is most likely to betray us. It is here that we place ourselves most at the angel's mercy and spend each day hoping it will not strike down.</p>
         </div>
         <footer class="angels-footer">
-          &copy; Nengasca, Renzo D.: WD203
+          &copy; Nengasca, Renzo D.: WD303
         </footer>
       </div>
       <div class="visual-section">
