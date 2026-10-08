@@ -59,9 +59,11 @@ const user = ref({
   age: ''
 })
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 const submitUser = async () => {
   try {
-    const response = await fetch('http://localhost:3000/submit-archive', {
+    const response = await fetch(`${API_BASE_URL}/api/submit-archive`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

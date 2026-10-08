@@ -60,10 +60,12 @@ const user = ref({
   age: ''
 })
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 const fetchUser = async () => {
   const id = route.params.id
   try {
-    const response = await fetch('http://localhost:3000/api/users')
+    const response = await fetch(`${API_BASE_URL}/api/users`)
     const users = await response.json()
     const found = users.find(u => u.id == id)
     if (found) {
@@ -77,7 +79,7 @@ const fetchUser = async () => {
 const submitUser = async () => {
   const id = route.params.id
   try {
-    const response = await fetch(`http://localhost:3000/update-user/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/update-user/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

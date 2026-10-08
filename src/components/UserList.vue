@@ -54,9 +54,11 @@ import { ref, onMounted, computed } from 'vue'
 const users = ref([])
 const searchTerm = ref('')
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 const fetchUsers = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/users')
+    const response = await fetch(`${API_BASE_URL}/api/users`)
     users.value = await response.json()
   } catch (err) {
     console.error('Failed to load archives:', err)
@@ -67,7 +69,7 @@ const deleteUser = async (id) => {
   if (!confirm('What sinks often cannot be recovered.')) return
 
   try {
-    await fetch(`http://localhost:3000/delete-user/${id}`, {
+    await fetch(`${API_BASE_URL}/api/delete-user/${id}`, {
       method: 'POST'
     })
     await fetchUsers()
