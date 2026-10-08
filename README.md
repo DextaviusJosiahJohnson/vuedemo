@@ -1,44 +1,67 @@
-# finalprj
+# 🌑 Phobos - A Deepwoken Inspired Web Project
 
-This template should help get you started developing with Vue 3 in Vite.
+A visually atmospheric, theme-driven website and user management system. This project serves as a technical demonstration of modern frontend development using Vue.js 3, integrated with a stateful Node.js backend.
 
-## Recommended IDE Setup
+## 🔮 Project Vision
+Phobos is designed with a "Shrine-like" aesthetic, drawing inspiration from the atmospheric storytelling and dark fantasy elements of *Deepwoken*. It prioritizes visual cohesion, utilizing backdrop filters, radial gradients, and a custom "Courier New" monospace identity to create a sense of ancient, digital mysticism.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🛠️ Technical Stack
 
-## Recommended Browser Setup
+### Frontend
+- **Framework**: Vue.js 3 (Composition API)
+- **Routing**: Vue Router 4 (Dynamic SPAs)
+- **Build Tool**: Vite
+- **Styling**: CSS3 (Custom Grid/Flex layouts, CSS animations, and backdrop-filters)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Data**: In-memory state management for user profiles
 
-## Customize configuration
+## ⛩️ Features
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **User Archives**: A full CRUD system for managing "Forgotten Souls" (User profiles).
+- **Interactive Meditations**: 
+  - **The Captain's Gate**: A state-based simulation exploring the balance between Agency and Fate.
+  - **The Offering Shrine**: Interactive elements that respond to user input.
+- **Visual Showcases**:
+  - **Grid & Flex Demos**: Implementation of complex CSS layouts.
+  - **Atmospheric Media**: Dissolve animations and themed galleries.
+- **Professional Profile**: Integrated digital resume and skill showcase.
 
-## Project Setup
+## 🚀 Getting Started
 
-```sh
-npm install
-```
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm
 
-### Compile and Hot-Reload for Development
+### Installation & Execution
 
-```sh
-npm run dev
-```
+1. **Clone the repository**
+   ```bash
+   git clone <repo-url>
+   cd vuedemo
+   ```
 
-### Compile and Minify for Production
+2. **Set up the Backend**
+   ```bash
+   cd backend
+   npm install
+   node server.js
+   ```
 
-```sh
-npm run build
-```
+3. **Set up the Frontend**
+   ```bash
+   cd ..
+   npm install
+   npm run dev
+   ```
 
-### Lint with [ESLint](https://eslint.org/)
+4. **Access the site**
+   Open your browser to the local URL provided by Vite (usually `http://localhost:5173`).
 
-```sh
-npm run lint
-```
+## 📜 Credits
+Developed by **Renzo D. Nengasca** as part of the WD203 curriculum.
+
+---
+*“The gate stands neither fully open nor closed—it exists in the space between surrender and sovereignty.”*
