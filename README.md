@@ -5,17 +5,20 @@
 - **Routing**: Vue Router 4 (Dynamic SPAs)
 - **Build Tool**: Vite
 - **Styling**: CSS3 (Custom Grid/Flex layouts, CSS animations, and backdrop-filters)
+- **Hosting**: Vercel
 
 ### Backend
 - **Runtime**: Node.js
 - **Framework**: Express.js
-- **Data**: In-memory state management for user profiles
-- 
+- **Database**: MongoDB Atlas (Cloud NoSQL)
+- **Hosting**: Render
+
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v18+ recommended)
 - npm
+- A MongoDB Atlas account and connection string
 
 ### Installation & Execution
 
@@ -26,18 +29,16 @@
    ```
 
 2. **Set up the Backend**
-   ```bash
-   cd backend
-   npm install
-   node server.js
-   ```
+   - Navigate to the backend folder: `cd backend`
+   - Install dependencies: `npm install`
+   - Create a `.env` file or set an environment variable: `MONGODB_URI=your_mongodb_connection_string`
+   - Start the server: `npm start`
 
 3. **Set up the Frontend**
-   ```bash
-   cd ..
-   npm install
-   npm run dev
-   ```
+   - Navigate to the root: `cd ..`
+   - Install dependencies: `npm install`
+   - Set a `.env` variable: `VITE_API_BASE_URL=your_render_backend_url`
+   - Start the dev server: `npm run dev`
 
 4. **Access the site**
    Open your browser to the local URL provided by Vite (usually `http://localhost:5173`).
